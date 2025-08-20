@@ -16,10 +16,10 @@ timezone: Europe/London
 
 title: Rupert
 
-tagline: Games, Computer Graphics, Art, and Miscellania
+tagline: Game Development, Computer Graphics, Procedural Art
 
 description: >- # used by seo meta and the atom feed
-  A personal website of video games, computer graphics, and generative art articles.
+  A personal blog website of video games, computer graphics, and procedural art articles.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -99,7 +99,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
