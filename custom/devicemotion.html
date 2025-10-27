@@ -1,0 +1,109 @@
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Orientation</title>
+  <style>
+
+body {
+  margin: 0px;
+  font-family: monospace;
+}
+
+.myrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mycol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.mybox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  border-radius: 10px;
+  height: 80px;
+}
+
+.label {
+  width: 80px;
+}
+.number {
+  width: 160px;
+}
+
+.alpha {
+  background-color: #ffb8b8;
+}
+.beta {
+  background-color: #c4ffb8;
+}
+.gamma {
+  background-color: #b8e2ff;
+}
+
+  </style>
+  </head>
+  <body>
+  <div class="mycol">
+    <div class="myrow">
+      <div class="mybox label alpha">alpha</div>
+      <div id="alpha" class="mybox number alpha">0</div>
+    </div>
+    <div class="myrow">
+      <div class="mybox label beta">beta</div>
+      <div id="beta" class="mybox number beta">0</div>
+    </div>
+    <div class="myrow">
+      <div class="mybox label gamma">gamma</div>
+      <div id="gamma" class="mybox number gamma">0</div>
+    </div>
+  </div>
+
+<script>
+
+var motion_data = {"alpha": 0, "beta": 0, "gamma": 0};
+
+function setup_orientation_capture() {
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    document.getElementById("enable_orientation_button").addEventListener("click", () => {
+      DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            window.addEventListener('deviceorientation', (event) => {
+              motion_data = {"alpha": event.alpha, "beta": event.beta, "gamma": event.gamma};
+            });
+          }
+        })
+    });
+  } else {
+    window.addEventListener('deviceorientation', (event) => {
+      motion_data = {"alpha": event.alpha, "beta": event.beta, "gamma": event.gamma};
+    });
+  }
+}
+setup_orientation_capture();
+
+
+function display_motion_data(motion_data) {
+  document.getElementById('alpha').innerHTML = Math.round(motion_data.alpha);
+  document.getElementById('beta').innerHTML = Math.round(motion_data.beta);
+  document.getElementById('gamma').innerHTML = Math.round(motion_data.gamma);
+}
+
+setInterval(() => {
+  display_motion_data(motion_data);
+}, 17);
+
+</script>
+
+  </body>
+</html>
