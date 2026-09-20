@@ -292,6 +292,5 @@ vec3 sky_full(vec3 vd, vec3 sd) {
 }
 ```
 
-And finally here is the completed shader. Click on the title of the shader to view the source code and play around with the parameters.
+And finally the shader is complete. [Check it out on shadertoy](https://www.shadertoy.com/view/Wcs3z4).
 
-<iframe width="760" height="399" frameborder="0" src="https://www.shadertoy.com/embed/Wcs3z4?gui=false&t=0&paused=false&muted=true" allowfullscreen></iframe>
